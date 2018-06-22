@@ -17,6 +17,6 @@ class MainActivity : AppCompatActivity() {
         display("Thiago Cavalcante")
     }
     fun display(string: String){
-        println("My name is >>>>>>> $string")
+        println("My name is >>>>> $string")
     }
 }
