@@ -3,9 +3,11 @@ package com.thiagojc89.franfodao
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         client.newCall(requestTopRated).enqueue(object: Callback{
             override fun onResponse(call: Call?, response: Response?) {
                 val body = response?.body()?.string()
-                println(body)
+                val gson = GsonBuilder().create()
+                val homeApp = gson.fromJson(body, maskApp::class .java)
 
                 }
 
@@ -39,3 +42,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+class maskApp(val results :List<movieList>)
+class movieList(val vote_count:Int, val id: Int, val video: Boolean, val vote_averege: Float, val title: String, val popularity: Float,
+                val poster_path: String, val original_language: String, val original_title: String, val genre_kids: genreKids,
+                val backdrop_path: String, val adult: Boolean, val overview: String, val release_date: Date)
+class genreKids(val genreKidsList: Int)

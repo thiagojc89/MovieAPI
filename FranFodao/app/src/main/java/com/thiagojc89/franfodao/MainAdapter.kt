@@ -25,5 +25,7 @@ class MainAdapter: RecyclerView.Adapter<CustomViewHolder>(){
 
     }
 }
+
+
 class CustomViewHolder(val view : View) : RecyclerView.ViewHolder(view) {
 }
