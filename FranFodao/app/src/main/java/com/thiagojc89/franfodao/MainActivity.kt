@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         recyclerView_main.layoutManager = LinearLayoutManager(this)
-        recyclerView_main.adapter = MainAdapter()
+//        recyclerView_main.adapter = MainAdapter()
 
         fetchJson()
         display("Thiago Cavalcante")
@@ -31,9 +31,15 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call?, response: Response?) {
                 val body = response?.body()?.string()
                 val gson = GsonBuilder().create()
-                val homeApp = gson.fromJson(body, maskApp::class .java)
+                val homeFeed = gson.fromJson(body, Homefeed::class .java)
 
+
+
+                runOnUiThread {
+                    recyclerView_main.adapter = MainAdapter(homeFeed)
                 }
+
+            }
 
             override fun onFailure(call: Call?, e: IOException?) {
                 println("Failed request Call")
@@ -43,8 +49,7 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-class maskApp(val results :List<movieList>)
-class movieList(val vote_count:Int, val id: Int, val video: Boolean, val vote_averege: Float, val title: String, val popularity: Float,
-                val poster_path: String, val original_language: String, val original_title: String, val genre_kids: genreKids,
-                val backdrop_path: String, val adult: Boolean, val overview: String, val release_date: Date)
-class genreKids(val genreKidsList: Int)
+class Homefeed(val results :List<movieList>)
+class movieList(val id: Int, val video: Boolean,
+                val title: String, val poster_path: String,
+                val backdrop_path: String, val release_date: Date)
