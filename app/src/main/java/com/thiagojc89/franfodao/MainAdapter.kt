@@ -9,21 +9,22 @@ import kotlinx.android.synthetic.main.movie_content_row.view.*
 class MainAdapter(val homeFeed: Homefeed): RecyclerView.Adapter<CustomViewHolder>(){
 
     val videoTitles = listOf("uno","dos","treze","catorze")
+
     override fun getItemCount(): Int {
-        //return videoTitles.size
-        println("Thiago >>>>>>> "+homeFeed.results.count())
-        return homeFeed.results.count()
+        return videoTitles.count()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val cellForRow = layoutInflater.inflate(R.layout.movie_content_row,parent,false)
+        val layoutInflater = LayoutInflater.from(parent?.context)
+        val cellForRow = layoutInflater.inflate(R.layout.movie_content_row,parent, false)
         return CustomViewHolder(cellForRow)
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val videoTitle = videoTitles.get(position)
-        holder?.view?.textView_video_title?.text = videoTitle
+
+        val results = homeFeed.results.get(position)
+        holder?.view?.textView_video_title?.text = results.title
 
     }
 }
