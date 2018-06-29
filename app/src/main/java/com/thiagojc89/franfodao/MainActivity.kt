@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity() {
                 val gson = GsonBuilder().create()
                 val homeFeed = gson.fromJson(body, Homefeed::class .java)
 
-
-
                 runOnUiThread {
                     recyclerView_main.adapter = MainAdapter(homeFeed)
                 }
