@@ -11,7 +11,7 @@ class MainAdapter(val homeFeed: Homefeed): RecyclerView.Adapter<CustomViewHolder
     val videoTitles = listOf("uno","dos","treze","catorze")
 
     override fun getItemCount(): Int {
-        return videoTitles.count()
+        return homeFeed.results.count()
 
     }
 
