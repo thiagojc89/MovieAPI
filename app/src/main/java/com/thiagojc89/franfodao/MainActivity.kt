@@ -14,18 +14,26 @@ class MainActivity : AppCompatActivity() {
     fun display(string: String){
         println(">>>>> $string")
     }
+    val apiKey = "3bd23754eab8b7f3bfb1f5a8955e3fe4"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         recyclerView_main.layoutManager = LinearLayoutManager(this)
-//        recyclerView_main.adapter = MainAdapter()
-
+        recyclerView_main.adapter = MainAdapter()
+        fetchGetConfiguration()
         fetchJson()
         display("Thiago Cavalcante")
     }
+
+    fun fetchGetConfiguration(){
+        val urlConfig = "https://api.themoviedb.org/3/configuration?api_key=3bd23754eab8b7f3bfb1f5a8955e3fe4"
+
+    }
+
     fun fetchJson(){
-        val url = "https://api.themoviedb.org/3/movie/top_rated?api_key=3bd23754eab8b7f3bfb1f5a8955e3fe4"
-        val requestTopRated = Request.Builder().url(url).build()
+        val urlApiRated = "https://api.themoviedb.org/3/movie/top_rated?api_key=$apiKey"
+        val requestTopRated = Request.Builder().url(urlApiRated).build()
         val client = OkHttpClient()
         client.newCall(requestTopRated).enqueue(object: Callback{
             override fun onResponse(call: Call?, response: Response?) {

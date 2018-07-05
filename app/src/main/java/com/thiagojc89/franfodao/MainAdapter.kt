@@ -8,8 +8,6 @@ import kotlinx.android.synthetic.main.movie_content_row.view.*
 
 class MainAdapter(val homeFeed: Homefeed): RecyclerView.Adapter<CustomViewHolder>(){
 
-    val videoTitles = listOf("uno","dos","treze","catorze")
-
     override fun getItemCount(): Int {
         return homeFeed.results.count()
 
@@ -28,7 +26,6 @@ class MainAdapter(val homeFeed: Homefeed): RecyclerView.Adapter<CustomViewHolder
 
     }
 }
-
 
 class CustomViewHolder(val view : View) : RecyclerView.ViewHolder(view) {
 }
