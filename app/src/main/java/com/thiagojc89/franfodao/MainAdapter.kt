@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_content_row.view.*
 
 class MainAdapter(val homeFeed: Homefeed): RecyclerView.Adapter<CustomViewHolder>(){
@@ -23,7 +24,11 @@ class MainAdapter(val homeFeed: Homefeed): RecyclerView.Adapter<CustomViewHolder
 
         val results = homeFeed.results.get(position)
         holder?.view?.textView_video_title?.text = results.title
-
+        val urlImageOriginal = "https://image.tmdb.org/t/p/w500/"
+        val imagem = holder?.view.imageViewPoster
+        Picasso.with(holder.view.context)
+                .load(urlImageOriginal+results.poster_path)
+                .into(imagem)
     }
 }
 
