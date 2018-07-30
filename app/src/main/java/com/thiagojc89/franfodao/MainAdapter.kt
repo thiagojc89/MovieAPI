@@ -32,5 +32,4 @@ class MainAdapter(private val homeFeed: Homefeed): RecyclerView.Adapter<CustomVi
                 .into(imagem)
     }
 }
-class CustomViewHolder(val view : View) : RecyclerView.ViewHolder(view){
-}
+class CustomViewHolder(val view : View):RecyclerView.ViewHolder(view)

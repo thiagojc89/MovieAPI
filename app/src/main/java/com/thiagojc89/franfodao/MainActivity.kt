@@ -7,15 +7,12 @@ import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.IOException
-import java.util.*
-import kotlin.collections.ArrayList
-
 class MainActivity : AppCompatActivity() {
 
-    fun display(string: String){
+    private fun display(string: String){
         println(">>>>> $string")
     }
-    val apiKey = "3bd23754eab8b7f3bfb1f5a8955e3fe4"
+    private val apiKey = "3bd23754eab8b7f3bfb1f5a8955e3fe4"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +24,8 @@ class MainActivity : AppCompatActivity() {
         display("Thiago Cavalcante")
     }
 
-    fun fetchJson(){
+    private fun fetchJson(){
         val urlApiRated = "https://api.themoviedb.org/3/movie/top_rated?api_key=$apiKey"
-        val urlImageOriginal = "https://image.tmdb.org/t/p/original/"
         val requestTopRated = Request.Builder().url(urlApiRated).build()
         val client = OkHttpClient()
         client.newCall(requestTopRated).enqueue(object: Callback{
@@ -52,6 +48,4 @@ class MainActivity : AppCompatActivity() {
 
 }
 class Homefeed(val results :List<MovieList>)
-class MovieList(val id: Int, val video: Boolean,
-                val title: String, val poster_path: String,
-                val backdrop_path: String, val release_date: Date)
+class MovieList(val id: Int,val title: String, val poster_path: String)
