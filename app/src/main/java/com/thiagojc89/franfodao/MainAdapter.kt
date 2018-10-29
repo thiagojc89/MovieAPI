@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_content_row.view.*
 
-class MainAdapter(private val homeFeed: Homefeed): RecyclerView.Adapter<CustomViewHolder>(){
+class MainAdapter(private val homeFeed: Homefeed): RecyclerView.Adapter<MainAdapter.CustomViewHolder>(){
+
+    class CustomViewHolder(val view : View):RecyclerView.ViewHolder(view)
 
     override fun getItemCount(): Int {
         return homeFeed.results.count()
@@ -27,9 +29,7 @@ class MainAdapter(private val homeFeed: Homefeed): RecyclerView.Adapter<CustomVi
         val urlImageOriginal = "https://image.tmdb.org/t/p/w500/"
         val imagem = holder.view.imageViewPoster
         Picasso.get()
-//        Picasso.with(holder.view.context)
                 .load(urlImageOriginal+results.poster_path)
                 .into(imagem)
     }
 }
-class CustomViewHolder(val view : View):RecyclerView.ViewHolder(view)

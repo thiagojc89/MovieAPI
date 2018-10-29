@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FranFodao</string>
+    <string name="request_error">Failed request Call</string>
+    <string name="api_key">3bd23754eab8b7f3bfb1f5a8955e3fe4</string>
 </resources>
